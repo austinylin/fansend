@@ -16,13 +16,15 @@ int main(int argc, char *argv[]) {
     int syncLength = 35;
     int repeat = 7;
     
+    if (argc != 2) return 1;
+    string command = argv[1];
+    
     if (wiringPiSetup () == -1) return 1;
     pinMode(PIN, OUTPUT);
-    string codeWord = "100100100100100101100100101100100101";
     
     vector<int> code;
-    for(int i=0; i<codeWord.size(); i++) {
-        code.push_back(codeWord[i]-'0');
+    for(int i=0; i<command.size(); i++) {
+        code.push_back(command[i]-'0');
     }
     
     for(int r=0; r<repeat; r++) {
